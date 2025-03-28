@@ -1,5 +1,5 @@
 import { Suspense } from "react"
-import ProductDetail from "~/app/products/components/product-detail"
+import ProductDetails from "../components/product-details"
 
 
 type ProductPageProps = {
@@ -11,7 +11,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <ProductDetail productId={id} />
+      <ProductDetails productId={id} />
     </Suspense>
   )
 }

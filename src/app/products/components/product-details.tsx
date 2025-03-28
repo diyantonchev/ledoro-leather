@@ -12,7 +12,7 @@ interface ProductDetailProps {
   productId: string
 }
 
-export default function ProductDetail({ productId }: ProductDetailProps) {
+export default function ProductDetails({ productId }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1)
   const [currentImage, setCurrentImage] = useState(0)
   const { addToCart } = useCart()
