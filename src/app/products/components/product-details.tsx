@@ -287,6 +287,8 @@ const products = [
     gallery: [
       "/classic-wallet.jpg?height=800&width=800",
       "/classic-wallet-1.jpg?height=800&width=800",
+      "/classic-wallet-2.jpg?height=800&width=800",
+      "/classic-wallet-3.jpg?height=800&width=800",
     ],
     description:
       "A timeless belt crafted from full-grain leather with a solid brass buckle. Designed to age beautifully with wear.",
