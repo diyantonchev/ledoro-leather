@@ -1,0 +1,170 @@
+import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight } from "lucide-react"
+
+import { Button } from "~/components/ui/button"
+
+export default function Home() {
+  return (
+    <div className="flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <section className="relative w-full h-[70vh]">
+        <Image
+          src="/placeholder.svg?height=1080&width=1920"
+          alt="Luxury leather goods"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-3xl md:text-5xl font-light text-white mb-4">LEDORO LEATHER</h1>
+          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-xl">Timeless craftsmanship. Modern luxury.</p>
+          <Button asChild size="lg" className="bg-white text-black hover:bg-white/90">
+            <Link href="/products">
+              {/* Shop Collection <ArrowRight className="ml-2 h-4 w-4" /> */}
+              Към продуктите <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* Featured Collection */}
+      <section className="py-16 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-light mb-4">
+            {/* FEATURED COLLECTION */}
+            Колекция
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            {/* Our signature pieces, crafted with premium Italian leather and meticulous attention to detail. */}
+            Нашите продукти, изработени с премиум кожи и изключително внимание към детайла.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {featuredProducts.map((product) => (
+            <Link key={product.id} href={`/products/${product.id}`} className="group">
+              <div className="relative aspect-square mb-4 overflow-hidden bg-gray-100">
+                <Image
+                  src={product.image || "/placeholder.svg"}
+                  alt={product.name}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <h3 className="font-light text-lg">{product.name}</h3>
+              <p className="text-muted-foreground">${product.price}</p>
+            </Link>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Button asChild variant="outline">
+            <Link href="/products">
+              {/* View All Products */}
+              Виж всички продукти <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+
+      {/* Story Section */}
+      <section className="py-16 px-4 md:px-6 lg:px-8 bg-muted/50">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-light mb-4">OUR STORY</h2>
+            <p className="text-muted-foreground mb-6">
+              {/* Ledoro Leather was founded on the principles of exceptional craftsmanship and timeless design. Each piece
+              is meticulously handcrafted by skilled artisans using the finest Italian leather. */}
+              Ledoro Leather е основана на принципите на ръчна изработка. 
+              Всички продукти са изработени с изключително внимание към детайла и устойчиви практики.
+            </p>
+            <p className="text-muted-foreground mb-6">
+              {/* Our commitment to quality and sustainability ensures that every Ledoro product not only looks beautiful
+              but is built to last for generations. */}
+              Нашата цел е да гарантираме високо качество и устойчивост, така че всеки продукт на Ledoro да изглежда красиво, 
+              но е изграден да продължи да бъде използван за поколения.
+            </p>
+            <Button asChild variant="outline">
+              <Link href="/about">
+                {/* Learn More */}
+                Научи повече <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+          <div className="relative aspect-square">
+            <Image
+              src="/placeholder.svg?height=800&width=800"
+              alt="Craftsman working on leather"
+              fill
+              className="object-cover rounded-md"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-16 px-4 md:px-6 lg:px-8 bg-black text-white">
+        <div className="max-w-xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-light mb-4">JOIN OUR COMMUNITY</h2>
+          <p className="text-white/80 mb-8">
+            Subscribe to receive updates on new collections, exclusive offers, and styling inspiration.
+          </p>
+          <form className="flex flex-col items-center sm:flex-row gap-3">
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="flex-1 px-4 py-3 bg-transparent border border-white/30 rounded-md text-white placeholder:text-white/50"
+              required
+            />
+            <Button className="bg-white text-black hover:bg-white/90">Subscribe</Button>
+          </form>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+const featuredProducts = [
+  {
+    id: "minimal-wallet",
+    // name: "Minimal Wallet",
+    name: "Минималистичен портфлейл",
+    price: "125.00",
+    image: "/placeholder.svg?height=600&width=600",
+    category: "wallets",
+  },
+  {
+    id: "card-holder",
+    name: "Card Holder",
+    price: "85.00",
+    image: "/placeholder.svg?height=600&width=600",
+    category: "wallets",
+  },
+  {
+    id: "classic-wallet",
+    // name: "Classic Wallet",
+    name: "Класически портфлейл",
+    price: "165.00",
+    image: "/placeholder.svg?height=600&width=600",
+    category: "wallets",
+  },
+  {
+    id: "engraved-wallet",
+    // name: "Engraved Wallet",
+    name: "Гравиран портфлейл",
+    price: "195.00",
+    image: "/placeholder.svg?height=600&width=600",
+    category: "wallets",
+  },
+  {
+    id: "keychain",
+    // name: "Leather Keychain",
+    name: "Кожен ключодържател",
+    price: "45.00",
+    image: "/placeholder.svg?height=600&width=600",
+    category: "accessories",
+  }
+]
+
