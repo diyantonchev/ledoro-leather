@@ -14,31 +14,37 @@ export default function Header() {
 
   return (
     <header className="border-b">
-      <div className="container mx-auto px-4 flex h-16 items-center justify-between">
-        <div className="md:hidden">
-          <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(true)}>
-            <Menu className="h-6 w-6" />
-            <span className="sr-only">Open menu</span>
-          </Button>
+      <div className="container mx-auto px-4 grid grid-cols-3 h-16 items-center">
+        <div className="flex items-center">
+          <div className="md:hidden">
+            <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(true)}>
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </div>
+          <div className="hidden md:flex md:gap-10">
+            <Link href="/products" className="text-sm font-light hover:text-muted-foreground transition-colors">
+              {/* SHOP */}
+              Магазин
+            </Link>
+            <Link href="/about" className="text-sm font-light hover:text-muted-foreground transition-colors">
+              {/* ABOUT */}
+              За нас
+            </Link>
+            <Link href="/contact" className="text-sm font-light hover:text-muted-foreground transition-colors">
+              {/* CONTACT */}
+              Контакти
+            </Link>
+          </div>
         </div>
 
-        <div className="hidden md:flex md:gap-10">
-          <Link href="/products" className="text-sm font-light hover:text-muted-foreground transition-colors">
-            SHOP
-          </Link>
-          <Link href="/about" className="text-sm font-light hover:text-muted-foreground transition-colors">
-            ABOUT
-          </Link>
-          <Link href="/contact" className="text-sm font-light hover:text-muted-foreground transition-colors">
-            CONTACT
+        <div className="justify-self-center">
+          <Link href="/" className="text-xl font-light">
+            LEDORO
           </Link>
         </div>
 
-        <Link href="/" className="text-xl font-light">
-          LEDORO
-        </Link>
-
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 justify-self-end">
           <Button variant="ghost" size="icon">
             <Search className="h-5 w-5" />
             <span className="sr-only">Search</span>
@@ -51,7 +57,7 @@ export default function Header() {
                   {totalItems}
                 </span>
               )}
-              <span className="sr-only">Cart</span>
+              <span className="sr-only">Количка</span>
             </Link>
           </Button>
         </div>
@@ -60,15 +66,19 @@ export default function Header() {
       {/* Mobile menu */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-white">
-          <div className="flex h-16 items-center justify-between px-4 border-b">
-            <div />
-            <Link href="/" className="text-xl font-light">
-              LEDORO
-            </Link>
-            <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(false)}>
-              <X className="h-6 w-6" />
-              <span className="sr-only">Close menu</span>
-            </Button>
+          <div className="grid grid-cols-3 h-16 items-center px-4 border-b">
+            <div></div>
+            <div className="justify-self-center">
+              <Link href="/" className="text-xl font-light">
+                LEDORO
+              </Link>
+            </div>
+            <div className="justify-self-end">
+              <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(false)}>
+                <X className="h-6 w-6" />
+                <span className="sr-only">Close menu</span>
+              </Button>
+            </div>
           </div>
           <nav className="mt-8 px-4">
             <ul className="space-y-6 text-center">
