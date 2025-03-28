@@ -8,20 +8,17 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-light mb-4">LEDORO</h3>
             <p className="text-sm text-muted-foreground">
-              {/* Premium leather goods crafted with exceptional attention to detail and sustainable practices. */}
               Луксозни кожени изделия, изработени с изключително внимание към детайла и устойчиви практики.
             </p>
           </div>
 
           <div>
             <h4 className="text-sm font-medium mb-4">
-              {/* SHOP */}
               Магазин
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/products" className="text-muted-foreground hover:text-foreground transition-colors">
-                  {/* All Products */}
                   Всички продукти
                 </Link>
               </li>
@@ -30,7 +27,6 @@ export default function Footer() {
                   href="/products?category=wallets"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {/* Wallets */}
                   Портфейли
                 </Link>
               </li>
@@ -39,7 +35,6 @@ export default function Footer() {
                   href="/products?category=bags"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {/* Bags */}
                   Чанти
                 </Link>
               </li>
@@ -48,7 +43,6 @@ export default function Footer() {
                   href="/products?category=accessories"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {/* Accessories */}
                   Аксесоари
                 </Link>
               </li>
@@ -57,25 +51,21 @@ export default function Footer() {
 
           <div>
             <h4 className="text-sm font-medium mb-4">
-              {/* Information */}
               Информация
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/shipping" className="text-muted-foreground hover:text-foreground transition-colors">
-                  {/* Shipping & Returns */}
                   Доставка и връщане
                 </Link>
               </li>
               <li>
                 <Link href="/terms" className="text-muted-foreground hover:text-foreground transition-colors">
-                  {/* Terms & Conditions */}
                   Условия за ползване
                 </Link>
               </li>
               <li>
                 <Link href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
-                  {/* Privacy Policy */}
                   Политика за поверителност
                 </Link>
               </li>
@@ -84,19 +74,16 @@ export default function Footer() {
 
           <div>
             <h4 className="text-sm font-medium mb-4">
-              {/* Blog */}
               Блог
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
-                  {/* About Us */}
                   За нас
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
-                  {/* Contact */}
                   Контакт
                 </Link>
               </li>

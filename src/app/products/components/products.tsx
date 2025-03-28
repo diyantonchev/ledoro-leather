@@ -99,7 +99,7 @@ const products = [
     // name: "Leather Keychain",
     name: "Кожен ключодържател",
     price: "45.00",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "/keychain.jpg?height=600&width=600",
     category: "accessories",
   },
   {

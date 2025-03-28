@@ -25,7 +25,7 @@ export default function CheckoutPage() {
     state: "",
     zipCode: "",
     country: "United States",
-    paymentMethod: "credit-card",
+    paymentMethod: "cash-on-delivery",
   })
 
   const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0)
@@ -51,10 +51,14 @@ export default function CheckoutPage() {
   if (cart.length === 0) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
-        <h1 className="text-2xl font-light mb-4">Your cart is empty</h1>
-        <p className="text-muted-foreground mb-8">You need to add items to your cart before checking out.</p>
+        <h1 className="text-2xl font-light mb-4">
+          Кошницата ти е празна
+        </h1>
+        <p className="text-muted-foreground mb-8">
+          Моля, добавете продукти в кошницата си преди да направите поръчка.
+          </p>
         <Button asChild>
-          <Link href="/products">Shop Now</Link>
+          <Link href="/products">Пазарувай сега</Link>
         </Button>
       </div>
     )
@@ -65,21 +69,21 @@ export default function CheckoutPage() {
       <div className="mb-8">
         <Link href="/cart" className="text-sm text-muted-foreground hover:text-foreground flex items-center">
           <ChevronLeft className="h-4 w-4 mr-1" />
-          Back to cart
+          Обратно към кошницата
         </Link>
       </div>
 
-      <h1 className="text-2xl md:text-3xl font-light mb-8 text-center">CHECKOUT</h1>
+      <h1 className="text-2xl md:text-3xl font-light mb-8 text-center">Каса</h1>
 
       <div className="grid lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2">
           <form onSubmit={handleSubmit}>
             <div className="space-y-8">
               <div>
-                <h2 className="text-lg font-medium mb-4">Contact Information</h2>
+                <h2 className="text-lg font-medium mb-4">Информация за контакт</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
+                    <Label htmlFor="firstName">Име</Label>
                     <Input
                       id="firstName"
                       name="firstName"
@@ -89,7 +93,7 @@ export default function CheckoutPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
+                    <Label htmlFor="lastName">Фамилия</Label>
                     <Input
                       id="lastName"
                       name="lastName"
@@ -99,7 +103,7 @@ export default function CheckoutPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">Имейл</Label>
                     <Input
                       id="email"
                       name="email"
@@ -110,7 +114,7 @@ export default function CheckoutPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone</Label>
+                    <Label htmlFor="phone">Телефон</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -126,10 +130,10 @@ export default function CheckoutPage() {
               <Separator />
 
               <div>
-                <h2 className="text-lg font-medium mb-4">Shipping Address</h2>
+                <h2 className="text-lg font-medium mb-4">Адрес за доставка</h2>
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="address">Address</Label>
+                    <Label htmlFor="address">Адрес</Label>
                     <Input
                       id="address"
                       name="address"
@@ -140,17 +144,17 @@ export default function CheckoutPage() {
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="city">City</Label>
+                      <Label htmlFor="city">Град</Label>
                       <Input id="city" name="city" value={formState.city} onChange={handleInputChange} required />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="state">State / Province</Label>
+                      <Label htmlFor="state">Област</Label>
                       <Input id="state" name="state" value={formState.state} onChange={handleInputChange} required />
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="zipCode">ZIP / Postal Code</Label>
+                      <Label htmlFor="zipCode">Пощенски код</Label>
                       <Input
                         id="zipCode"
                         name="zipCode"
@@ -160,7 +164,7 @@ export default function CheckoutPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="country">Country</Label>
+                      <Label htmlFor="country">Държава</Label>
                       <Input
                         id="country"
                         name="country"
@@ -176,31 +180,31 @@ export default function CheckoutPage() {
               <Separator />
 
               <div>
-                <h2 className="text-lg font-medium mb-4">Payment Method</h2>
+                <h2 className="text-lg font-medium mb-4">Начин на плащане</h2>
                 <RadioGroup
-                  defaultValue="credit-card"
+                  defaultValue="cash-on-delivery"
                   value={formState.paymentMethod}
                   onValueChange={(value) => setFormState({ ...formState, paymentMethod: value })}
                 >
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="credit-card" id="credit-card" />
-                    <Label htmlFor="credit-card">Credit Card</Label>
+                    <RadioGroupItem value="cash-on-delivery" id="cash-on-delivery" />
+                    <Label htmlFor="cash-on-delivery">Наложен платеж</Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="paypal" id="paypal" />
-                    <Label htmlFor="paypal">PayPal</Label>
+                    <RadioGroupItem value="credit-card" id="credit-card" />
+                    <Label htmlFor="credit-card">Карта</Label>
                   </div>
                 </RadioGroup>
 
                 {formState.paymentMethod === "credit-card" && (
                   <div className="mt-4 space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="cardNumber">Card Number</Label>
+                      <Label htmlFor="cardNumber">Номер на карта</Label>
                       <Input id="cardNumber" placeholder="**** **** **** ****" />
                     </div>
                     <div className="grid grid-cols-3 gap-4">
                       <div className="space-y-2 col-span-2">
-                        <Label htmlFor="expiry">Expiry Date</Label>
+                        <Label htmlFor="expiry">Валидност до</Label>
                         <Input id="expiry" placeholder="MM / YY" />
                       </div>
                       <div className="space-y-2">
@@ -213,7 +217,7 @@ export default function CheckoutPage() {
               </div>
 
               <Button type="submit" className="w-full">
-                Complete Order
+                Завърши поръчка
               </Button>
             </div>
           </form>
@@ -221,7 +225,7 @@ export default function CheckoutPage() {
 
         <div>
           <div className="bg-muted/30 p-6 rounded-lg">
-            <h2 className="text-lg font-medium mb-4">Order Summary</h2>
+            <h2 className="text-lg font-medium mb-4">Детайли на поръчка</h2>
 
             <div className="space-y-4 mb-6">
               {cart.map((item) => (
@@ -238,19 +242,19 @@ export default function CheckoutPage() {
 
             <div className="space-y-4 mt-4">
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Subtotal</span>
+                <span className="text-muted-foreground">Сума</span>
                 <span>${subtotal.toFixed(2)}</span>
               </div>
 
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Shipping</span>
-                <span>{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
+                <span className="text-muted-foreground">Доставка</span>
+                <span>{shipping === 0 ? "Безплатно" : `$${shipping.toFixed(2)}`}</span>
               </div>
 
               <Separator />
 
               <div className="flex justify-between font-medium">
-                <span>Total</span>
+                <span>Обща сума</span>
                 <span>${total.toFixed(2)}</span>
               </div>
             </div>

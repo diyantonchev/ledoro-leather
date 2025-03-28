@@ -7,7 +7,6 @@ import { Button } from "~/components/ui/button"
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
       <section className="relative w-full h-[70vh]">
         <Image
           src="/placeholder.svg?height=1080&width=1920"
@@ -163,7 +162,7 @@ const featuredProducts = [
     // name: "Leather Keychain",
     name: "Кожен ключодържател",
     price: "45.00",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "/keychain.jpg?height=600&width=600",
     category: "accessories",
   }
 ]

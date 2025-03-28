@@ -300,12 +300,11 @@ const products = [
     // name: "Leather Keychain",
     name: "Кожен ключодържател",
     price: "45.00",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "/keychain.jpg?height=600&width=600",
     gallery: [
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
+      "/keychain.jpg?height=800&width=800",
+      "/keychain-1.jpg?height=800&width=800",
+      "/keychain-2.jpg?height=800&width=800",
     ],
     description:
       "A stylish and durable keychain crafted from the same premium leather as our bags. Features a solid brass key ring.",

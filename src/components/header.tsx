@@ -23,16 +23,33 @@ export default function Header() {
             </Button>
           </div>
           <div className="hidden md:flex md:gap-10">
-            <Link href="/products" className="text-sm font-light hover:text-muted-foreground transition-colors">
-              {/* SHOP */}
-              Магазин
-            </Link>
+            <div className="group relative flex items-center">
+              <Link href="/products" className="text-sm font-light hover:text-muted-foreground transition-colors">
+                Магазин
+              </Link>
+              <div className="absolute left-0 top-full invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 pt-2 z-50">
+                <div className="bg-popover rounded-[6px] border p-2 shadow-md w-[200px]">
+                  <div className="space-y-1">
+                    <Link href="/products" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground">
+                      Всички продукти
+                    </Link>
+                    <Link href="/products?category=wallets" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
+                      Портфейли
+                    </Link>
+                    <Link href="/products?category=bags" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
+                      Чанти
+                    </Link>
+                    <Link href="/products?category=accessories" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
+                      Аксесоари
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
             <Link href="/about" className="text-sm font-light hover:text-muted-foreground transition-colors">
-              {/* ABOUT */}
               За нас
             </Link>
             <Link href="/contact" className="text-sm font-light hover:text-muted-foreground transition-colors">
-              {/* CONTACT */}
               Контакти
             </Link>
           </div>
@@ -84,17 +101,32 @@ export default function Header() {
             <ul className="space-y-6 text-center">
               <li>
                 <Link href="/products" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
-                  SHOP
+                  Всички продукти
+                </Link>
+              </li>
+              <li>
+                <Link href="/products?category=wallets" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
+                  Портфейли
+                </Link>
+              </li>
+              <li>
+                <Link href="/products?category=bags" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
+                  Чанти
+                </Link>
+              </li>
+              <li>
+                <Link href="/products?category=accessories" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
+                  Аксесоари
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
-                  ABOUT
+                  За нас
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
-                  CONTACT
+                  Контакти
                 </Link>
               </li>
             </ul>

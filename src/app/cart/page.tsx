@@ -19,10 +19,10 @@ export default function CartPage() {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
         <ShoppingBag className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-        <h1 className="text-2xl font-light mb-4">Your cart is empty</h1>
-        <p className="text-muted-foreground mb-8">Looks like you haven&apos;t added anything to your cart yet.</p>
+        <h1 className="text-2xl font-light mb-4">Вашата кошница е празна</h1>
+        <p className="text-muted-foreground mb-8">Изглежда, че не сте добавили нищо в кошницата си.</p>
         <Button asChild>
-          <Link href="/products">Continue Shopping</Link>
+          <Link href="/products">Продължи с пазаруването</Link>
         </Button>
       </div>
     )
@@ -30,7 +30,7 @@ export default function CartPage() {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <h1 className="text-2xl md:text-3xl font-light mb-8 text-center">SHOPPING CART</h1>
+      <h1 className="text-2xl md:text-3xl font-light mb-8 text-center">КОШНИЦА</h1>
 
       <div className="grid lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2">
@@ -88,35 +88,35 @@ export default function CartPage() {
 
         <div>
           <div className="bg-muted/30 p-6 rounded-lg">
-            <h2 className="text-lg font-medium mb-4">Order Summary</h2>
+            <h2 className="text-lg font-medium mb-4">Детайли на поръчка</h2>
 
             <div className="space-y-4">
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Subtotal</span>
+                <span className="text-muted-foreground">Сума</span>
                 <span>${subtotal.toFixed(2)}</span>
               </div>
 
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Shipping</span>
-                <span>{shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}</span>
+                <span className="text-muted-foreground">Доставка</span>
+                <span>{shipping === 0 ? "Безплатно" : `$${shipping.toFixed(2)}`}</span>
               </div>
 
               <Separator />
 
               <div className="flex justify-between font-medium">
-                <span>Total</span>
+                <span>Обща сума</span>
                 <span>${total.toFixed(2)}</span>
               </div>
 
               {subtotal < 200 && (
                 <p className="text-sm text-muted-foreground">
-                  You&apos;re ${(200 - subtotal).toFixed(2)} away from free shipping
+                  Имате нужда от още {((200 - subtotal) / 100).toFixed(2)} лв. за безплатна доставка
                 </p>
               )}
             </div>
 
             <Button asChild className="w-full mt-6">
-              <Link href="/checkout">Proceed to Checkout</Link>
+              <Link href="/checkout">Към касата</Link>
             </Button>
           </div>
         </div>
