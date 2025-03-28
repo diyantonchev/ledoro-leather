@@ -4,6 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight, Minus, Plus, ShoppingBag } from "lucide-react"
+import { toast } from "sonner"
 
 import { Button } from "~/components/ui/button"
 import { useCart } from "~/components/cart-provider"
@@ -32,6 +33,8 @@ export default function ProductDetails({ productId }: ProductDetailProps) {
       quantity,
       image: product.image,
     })
+
+    toast.success(`${quantity} ${quantity === 1 ? 'брой' : 'броя'} ${product.name} добавен${quantity === 1 ? '' : 'и'} в кошницата`)
   }
 
   const decreaseQuantity = () => {
@@ -150,7 +153,7 @@ export default function ProductDetails({ productId }: ProductDetailProps) {
 
           <Button onClick={handleAddToCart} size="lg" className="w-full mb-4">
             <ShoppingBag className="mr-2 h-5 w-5" />
-            Добави в количката
+            Добави в кошницата
           </Button>
 
           <div className="text-sm text-muted-foreground">
