@@ -22,7 +22,7 @@ export default function PrivacyPage() {
         </ul>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">3. Цел на обработване</h2>
-        <p className="mb-6">Отговаряне на запитвания и подобряване на потребителското изживяване.</p>
+        <p className="mb-6">Отговаряне на запитвания и подобряване на функционирането на сайта.</p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">4. Правно основание</h2>
         <p className="mb-6">Съгласие и легитимен интерес.</p>
