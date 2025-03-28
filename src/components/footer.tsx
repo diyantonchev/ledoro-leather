@@ -57,44 +57,6 @@ export default function Footer() {
 
           <div>
             <h4 className="text-sm font-medium mb-4">
-              {/* Blog */}
-              Блог
-            </h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
-                  {/* About Us */}
-                  За нас
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
-                  {/* Contact */}
-                  Контакт
-                </Link>
-              </li>
-              <li>
-                <Link href="/shipping" className="text-muted-foreground hover:text-foreground transition-colors">
-                  {/* Shipping & Returns */}
-                  Доставка и връщане
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="text-muted-foreground hover:text-foreground transition-colors">
-                  {/* Terms & Conditions */}
-                  Условия за ползване
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
-                  {/* Privacy Policy */}
-                  Политика за поверителност
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-sm font-medium mb-4">
               {/* Information */}
               Информация
             </h4>
@@ -115,6 +77,27 @@ export default function Footer() {
                 <Link href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
                   {/* Privacy Policy */}
                   Политика за поверителност
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-medium mb-4">
+              {/* Blog */}
+              Блог
+            </h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
+                  {/* About Us */}
+                  За нас
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
+                  {/* Contact */}
+                  Контакт
                 </Link>
               </li>
             </ul>
