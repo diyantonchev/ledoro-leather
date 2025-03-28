@@ -128,7 +128,6 @@ export default function Home() {
 const featuredProducts = [
   {
     id: "minimal-wallet",
-    // name: "Minimal Wallet",
     name: "Минималистичен портфлейл",
     price: "125.00",
     image: "/placeholder.svg?height=600&width=600",
@@ -143,15 +142,13 @@ const featuredProducts = [
   },
   {
     id: "classic-wallet",
-    // name: "Classic Wallet",
     name: "Класически портфлейл",
     price: "165.00",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "/classic-wallet.jpg?height=600&width=600",
     category: "wallets",
   },
   {
     id: "engraved-wallet",
-    // name: "Engraved Wallet",
     name: "Гравиран портфлейл",
     price: "195.00",
     image: "/placeholder.svg?height=600&width=600",
@@ -159,10 +156,9 @@ const featuredProducts = [
   },
   {
     id: "keychain",
-    // name: "Leather Keychain",
     name: "Кожен ключодържател",
     price: "45.00",
-    image: "/keychain.jpg?height=600&width=600",
+    image: "/placeholder.svg?height=600&width=600",
     category: "accessories",
   }
 ]

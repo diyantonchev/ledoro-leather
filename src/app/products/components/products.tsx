@@ -49,7 +49,6 @@ const categoryTitles: Record<string, string> = {
 const products = [
   {
     id: "minimal-wallet",
-    // name: "Minimal Wallet",
     name: "Минималистичен портфлейл",
     price: "125.00",
     image: "/placeholder.svg?height=600&width=600",
@@ -64,7 +63,6 @@ const products = [
   },
   {
     id: "laptop-sleeve",
-    // name: "Laptop Sleeve",
     name: "Калъф за лаптоп",
     price: "175.00",
     image: "/placeholder.svg?height=600&width=600",
@@ -72,7 +70,6 @@ const products = [
   },
   {
     id: "crossbody-bag",
-    // name: "Crossbody Bag",
     name: "Чанта през рамо",
     price: "345.00",
     image: "/placeholder.svg?height=600&width=600",
@@ -80,15 +77,13 @@ const products = [
   },
   {
     id: "classic-wallet",
-    // name: "Classic Wallet",
     name: "Класически портфлейл",
     price: "165.00",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "/classic-wallet.jpg?height=600&width=600",
     category: "wallets",
   },
   {
     id: "engraved-wallet",
-    // name: "Engraved Wallet",
     name: "Гравиран портфлейл",
     price: "195.00",
     image: "/placeholder.svg?height=600&width=600",
@@ -96,15 +91,13 @@ const products = [
   },
   {
     id: "keychain",
-    // name: "Leather Keychain",
     name: "Кожен ключодържател",
     price: "45.00",
-    image: "/keychain.jpg?height=600&width=600",
+    image: "/placeholder.svg?height=600&width=600",
     category: "accessories",
   },
   {
     id: "belt",
-    // name: "Classic Belt",
     name: "Колан",
     price: "115.00",
     image: "/placeholder.svg?height=600&width=600",

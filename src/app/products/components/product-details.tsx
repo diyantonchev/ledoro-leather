@@ -169,7 +169,6 @@ export default function ProductDetails({ productId }: ProductDetailProps) {
 const products = [
   {
     id: "minimal-wallet",
-    // name: "Minimal Wallet",
     name: "Минималистичен портфлейл",
     price: "125.00",
     image: "/placeholder.svg?height=600&width=600",
@@ -213,7 +212,6 @@ const products = [
   },
   {
     id: "laptop-sleeve",
-    // name: "Laptop Sleeve",
     name: "Калъф за лаптоп",
     price: "175.00",
     image: "/placeholder.svg?height=600&width=600",
@@ -236,7 +234,6 @@ const products = [
   },
   {
     id: "crossbody-bag",
-    // name: "Crossbody Bag",
     name: "Чанта през рамо",
     price: "345.00",
     image: "/placeholder.svg?height=600&width=600",
@@ -286,12 +283,10 @@ const products = [
     id: "classic-wallet",
     name: "Класически портфлейл",
     price: "165.00",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "/classic-wallet.jpg?height=600&width=600",
     gallery: [
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
+      "/classic-wallet.jpg?height=800&width=800",
+      "/classic-wallet-1.jpg?height=800&width=800",
     ],
     description:
       "A timeless belt crafted from full-grain leather with a solid brass buckle. Designed to age beautifully with wear.",
@@ -300,14 +295,14 @@ const products = [
   },
   {
     id: "keychain",
-    // name: "Leather Keychain",
     name: "Кожен ключодържател",
     price: "45.00",
-    image: "/keychain.jpg?height=600&width=600",
+    image: "/placeholder.svg?height=600&width=600",
     gallery: [
-      "/keychain.jpg?height=800&width=800",
-      "/keychain-1.jpg?height=800&width=800",
-      "/keychain-2.jpg?height=800&width=800",
+      "/placeholder.svg?height=800&width=800",
+      "/placeholder.svg?height=800&width=800",
+      "/placeholder.svg?height=800&width=800",
+      "/placeholder.svg?height=800&width=800",
     ],
     description:
       "A stylish and durable keychain crafted from the same premium leather as our bags. Features a solid brass key ring.",
