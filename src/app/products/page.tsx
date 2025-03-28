@@ -1,22 +1,22 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
+import { useSearchParams } from 'next/navigation'
 
-export default function ProductsPage({
-  searchParams,
-}: {
-  searchParams: Record<string, string | string[] | undefined>
-}) {
-  const categoryFilter = searchParams.category as string | undefined
+export default function ProductsPage() {
+  const searchParams = useSearchParams()
+  const category = searchParams.get('category') ?? ''
 
-  const filteredProducts = categoryFilter
-    ? products.filter(product => product.category === categoryFilter)
+  const filteredProducts = category
+    ? products.filter(product => product.category === category)
     : products
 
   return (
     <div className="container mx-auto px-4 py-12">
       <h1 className="text-2xl md:text-3xl font-light mb-8 text-center">
-        {categoryFilter 
-          ? categoryTitles[categoryFilter] ?? `Category: ${categoryFilter}`
+        {category 
+          ? categoryTitles[category] ?? `Category: ${category}`
           : "Всички продукти"}
       </h1>
 
