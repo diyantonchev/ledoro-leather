@@ -24,7 +24,6 @@ export default function CheckoutPage() {
     city: "",
     state: "",
     zipCode: "",
-    country: "United States",
     paymentMethod: "cash-on-delivery",
   })
 
@@ -163,16 +162,6 @@ export default function CheckoutPage() {
                         required
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="country">Държава</Label>
-                      <Input
-                        id="country"
-                        name="country"
-                        value={formState.country}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
                   </div>
                 </div>
               </div>
@@ -233,7 +222,7 @@ export default function CheckoutPage() {
                   <span>
                     {item.name} × {item.quantity}
                   </span>
-                  <span>${(item.price * item.quantity).toFixed(2)}</span>
+                  <span>лв.{item.price * item.quantity}</span>
                 </div>
               ))}
             </div>
@@ -243,19 +232,19 @@ export default function CheckoutPage() {
             <div className="space-y-4 mt-4">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Сума</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>лв.{subtotal.toFixed(2)}</span>
               </div>
 
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Доставка</span>
-                <span>{shipping === 0 ? "Безплатно" : `$${shipping.toFixed(2)}`}</span>
+                <span>{shipping === 0 ? "Безплатно" : `лв.${shipping.toFixed(2)}`}</span>
               </div>
 
               <Separator />
 
               <div className="flex justify-between font-medium">
                 <span>Обща сума</span>
-                <span>${total.toFixed(2)}</span>
+                <span>лв.{total.toFixed(2)}</span>
               </div>
             </div>
           </div>

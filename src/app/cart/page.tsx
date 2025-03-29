@@ -46,10 +46,10 @@ export default function CartPage() {
                     <Link href={`/products/${item.id}`} className="font-medium hover:underline">
                       {item.name}
                     </Link>
-                    <p className="font-medium">${(item.price * item.quantity).toFixed(2)}</p>
+                    <p className="font-medium">лв.{(item.price * item.quantity).toFixed(2)}</p>
                   </div>
 
-                  <p className="text-sm text-muted-foreground mb-4">${item.price.toFixed(2)}</p>
+                  <p className="text-sm text-muted-foreground mb-4">лв.{item.price.toFixed(2)}</p>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center border rounded-md w-24">
@@ -93,19 +93,19 @@ export default function CartPage() {
             <div className="space-y-4">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Сума</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>лв.{subtotal.toFixed(2)}</span>
               </div>
 
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Доставка</span>
-                <span>{shipping === 0 ? "Безплатно" : `$${shipping.toFixed(2)}`}</span>
+                <span>{shipping === 0 ? "Безплатно" : `лв.${shipping.toFixed(2)}`}</span>
               </div>
 
               <Separator />
 
               <div className="flex justify-between font-medium">
                 <span>Обща сума</span>
-                <span>${total.toFixed(2)}</span>
+                <span>лв.{total.toFixed(2)}</span>
               </div>
 
               {subtotal < 200 && (

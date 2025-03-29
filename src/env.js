@@ -8,6 +8,8 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
+    PRODUCTS_SHEET_URL: z.string().url(),
+    COMMON_CONTENT_SHEET_URL: z.string().url(),
   },
 
   /**
@@ -25,7 +27,8 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+    PRODUCTS_SHEET_URL: process.env.PRODUCTS_SHEET_URL,
+    COMMON_CONTENT_SHEET_URL: process.env.COMMON_CONTENT_SHEET_URL,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

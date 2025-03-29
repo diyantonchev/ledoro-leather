@@ -3,8 +3,12 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 
 import { Button } from "~/components/ui/button"
+import { getProducts } from "./products/products-data"
 
-export default function Home() {
+export default async function Home() {
+  const products = await getProducts()
+  const featuredProducts = products.filter((product) => product.featured)
+
   return (
     <div className="flex flex-col min-h-screen">
       <section className="relative w-full h-[70vh]">
@@ -42,14 +46,14 @@ export default function Home() {
             <Link key={product.id} href={`/products/${product.id}`} className="group">
               <div className="relative aspect-square mb-4 overflow-hidden bg-gray-100">
                 <Image
-                  src={product.image || "/placeholder.svg"}
+                  src={`${product.image}&height=800&width=800` || "/placeholder.svg"}
                   alt={product.name}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
               <h3 className="font-light text-lg">{product.name}</h3>
-              <p className="text-muted-foreground">${product.price}</p>
+              <p className="text-muted-foreground">лв.{product.price}</p>
             </Link>
           ))}
         </div>
@@ -97,7 +101,7 @@ export default function Home() {
         <div className="max-w-xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-light mb-4">JOIN OUR COMMUNITY</h2>
           <p className="text-white/80 mb-8">
-            Subscribe to receive updates on new collections, exclusive offers, and styling inspiration.
+            Абонирайте се за да получавате известия за нови продукти, специални предложения и намаления.
           </p>
           <form className="flex flex-col items-center sm:flex-row gap-3">
             <input
@@ -113,42 +117,3 @@ export default function Home() {
     </div>
   )
 }
-
-const featuredProducts = [
-  {
-    id: "minimal-wallet",
-    name: "Минималистичен портфлейл",
-    price: "125.00",
-    image: "/placeholder.svg?height=600&width=600",
-    category: "wallets",
-  },
-  {
-    id: "card-holder",
-    name: "Card Holder",
-    price: "85.00",
-    image: "/placeholder.svg?height=600&width=600",
-    category: "wallets",
-  },
-  {
-    id: "classic-wallet",
-    name: "Класически портфлейл",
-    price: "165.00",
-    image: "/classic-wallet.jpg?height=600&width=600",
-    category: "wallets",
-  },
-  {
-    id: "engraved-wallet",
-    name: "Гравиран портфлейл",
-    price: "195.00",
-    image: "/placeholder.svg?height=600&width=600",
-    category: "wallets",
-  },
-  {
-    id: "keychain",
-    name: "Кожен ключодържател",
-    price: "45.00",
-    image: "/placeholder.svg?height=600&width=600",
-    category: "accessories",
-  }
-]
-

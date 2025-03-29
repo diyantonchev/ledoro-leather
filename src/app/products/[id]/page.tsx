@@ -1,5 +1,5 @@
 import ProductDetails from "./components/product-details"
-
+import { getProducts } from "../products-data"
 
 type ProductPageProps = {
   params: Promise<{ id: string }> 
@@ -8,7 +8,10 @@ type ProductPageProps = {
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params
 
+  const products = await getProducts()
+  const product = products.find((product) => product.id === id)
+
   return (
-    <ProductDetails productId={id} />
+    <ProductDetails product={product} />
   )
 }

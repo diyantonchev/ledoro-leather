@@ -12,40 +12,40 @@ export default function ConfirmationPage() {
     <div className="container mx-auto px-4 py-12 max-w-2xl text-center">
       <CheckCircle className="h-16 w-16 mx-auto mb-6 text-green-600" />
 
-      <h1 className="text-2xl md:text-3xl font-light mb-4">Order Confirmed</h1>
+      <h1 className="text-2xl md:text-3xl font-light mb-4">Поръчката е изпратена</h1>
 
       <p className="text-muted-foreground mb-8">
-        Thank you for your order! We have received your purchase and are preparing it for shipment.
+        Получихме вашата поръчка и я подготвяме за изпращане. Благодарим ви!
       </p>
 
       <div className="bg-muted/30 p-6 rounded-lg mb-8">
-        <h2 className="text-lg font-medium mb-4">Order Details</h2>
+        <h2 className="text-lg font-medium mb-4">Детайли на поръчката</h2>
 
         <div className="space-y-2 text-left">
           <div className="flex justify-between">
-            <span className="text-muted-foreground">Order Number:</span>
+            <span className="text-muted-foreground">Номер на поръчка:</span>
             <span className="font-medium">{orderNumber}</span>
           </div>
 
           <div className="flex justify-between">
-            <span className="text-muted-foreground">Date:</span>
+            <span className="text-muted-foreground">Дата:</span>
             <span>{new Date().toLocaleDateString()}</span>
           </div>
 
           <div className="flex justify-between">
             <span className="text-muted-foreground">Email:</span>
-            <span>A confirmation email has been sent</span>
+            <span>На вашият имейл е изпратено потвърждение</span>
           </div>
         </div>
       </div>
 
       <p className="text-sm text-muted-foreground mb-8">
-        You will receive an email confirmation shortly. If you have any questions about your order, please contact our
-        customer service team.
+        Ще получите имейл за потвърждение. Ако имате въпроси относно вашата поръчка, моля, свържете се с нашият
+        екип за обслужване на клиенти.
       </p>
 
       <Button asChild>
-        <Link href="/products">Continue Shopping</Link>
+        <Link href="/products">Продължи пазаруването</Link>
       </Button>
     </div>
   )

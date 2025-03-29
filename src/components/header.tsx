@@ -5,10 +5,12 @@ import { useState } from "react"
 import { Menu, Search, ShoppingBag, X } from "lucide-react"
 import { Button } from "~/components/ui/button"
 import { useCart } from "~/components/cart-provider"
+import { useCommonContent } from "./common-content-provider"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { cart } = useCart()
+  const commonContent = useCommonContent()
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0)
 
@@ -25,32 +27,32 @@ export default function Header() {
           <div className="hidden md:flex md:gap-10">
             <div className="group relative flex items-center">
               <Link href="/products" className="text-sm font-light hover:text-muted-foreground transition-colors">
-                Магазин
+                {commonContent.header_shop}
               </Link>
               <div className="absolute left-0 top-full invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 pt-2 z-50">
                 <div className="bg-popover rounded-[6px] border p-2 shadow-md w-[200px]">
                   <div className="space-y-1">
                     <Link href="/products" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground">
-                      Всички продукти
+                      {commonContent.link_all_products}
                     </Link>
                     <Link href="/products?category=wallets" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
-                      Портфейли
+                      {commonContent.link_wallets}
                     </Link>
                     <Link href="/products?category=bags" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
-                      Чанти
+                      {commonContent.link_bags}
                     </Link>
                     <Link href="/products?category=accessories" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
-                      Аксесоари
+                      {commonContent.link_accessories}
                     </Link>
                   </div>
                 </div>
               </div>
             </div>
             <Link href="/about" className="text-sm font-light hover:text-muted-foreground transition-colors">
-              За нас
+              {commonContent.link_about}
             </Link>
             <Link href="/contact" className="text-sm font-light hover:text-muted-foreground transition-colors">
-              Контакти
+              {commonContent.link_contacts}
             </Link>
           </div>
         </div>
@@ -101,32 +103,32 @@ export default function Header() {
             <ul className="space-y-6 text-center">
               <li>
                 <Link href="/products" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
-                  Всички продукти
+                  {commonContent.link_all_products}
                 </Link>
               </li>
               <li>
                 <Link href="/products?category=wallets" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
-                  Портфейли
+                  {commonContent.link_wallets}
                 </Link>
               </li>
               <li>
                 <Link href="/products?category=bags" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
-                  Чанти
+                  {commonContent.link_bags}
                 </Link>
               </li>
               <li>
                 <Link href="/products?category=accessories" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
-                  Аксесоари
+                  {commonContent.link_accessories}
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
-                  За нас
+                  {commonContent.link_about}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
-                  Контакти
+                  {commonContent.link_contacts}
                 </Link>
               </li>
             </ul>

@@ -3,8 +3,13 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useSearchParams } from 'next/navigation'
+import type { Product } from "../products-data"
 
-export default function Products() {
+type ProductsProps = {
+  products: Product[]
+}
+
+export default function Products({ products }: ProductsProps) {
   const searchParams = useSearchParams()
   const category = searchParams.get('category') ?? ''
 
@@ -25,14 +30,14 @@ export default function Products() {
           <Link key={product.id} href={`/products/${product.id}`} className="group">
             <div className="relative aspect-square mb-4 overflow-hidden bg-gray-100">
               <Image
-                src={product.image || "/placeholder.svg"}
+                src={`${product.image}&height=800&width=800` || "/placeholder.svg"}
                 alt={product.name}
                 fill
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
             <h3 className="font-light text-lg">{product.name}</h3>
-            <p className="text-muted-foreground">${product.price}</p>
+            <p className="text-muted-foreground">лв.{product.price}</p>
           </Link>
         ))}
       </div>
@@ -45,63 +50,3 @@ const categoryTitles: Record<string, string> = {
   accessories: "Аксесоари",
   bags: "Чанти"
 }
-
-const products = [
-  {
-    id: "minimal-wallet",
-    name: "Минималистичен портфлейл",
-    price: "125.00",
-    image: "/placeholder.svg?height=600&width=600",
-    category: "wallets",
-  },
-  {
-    id: "card-holder",
-    name: "Card Holder",
-    price: "85.00",
-    image: "/placeholder.svg?height=600&width=600",
-    category: "wallets",
-  },
-  {
-    id: "laptop-sleeve",
-    name: "Калъф за лаптоп",
-    price: "175.00",
-    image: "/placeholder.svg?height=600&width=600",
-    category: "accessories",
-  },
-  {
-    id: "crossbody-bag",
-    name: "Чанта през рамо",
-    price: "345.00",
-    image: "/placeholder.svg?height=600&width=600",
-    category: "bags",
-  },
-  {
-    id: "classic-wallet",
-    name: "Класически портфлейл",
-    price: "165.00",
-    image: "/classic-wallet.jpg?height=600&width=600",
-    category: "wallets",
-  },
-  {
-    id: "engraved-wallet",
-    name: "Гравиран портфлейл",
-    price: "195.00",
-    image: "/placeholder.svg?height=600&width=600",
-    category: "wallets",
-  },
-  {
-    id: "keychain",
-    name: "Кожен ключодържател",
-    price: "45.00",
-    image: "/placeholder.svg?height=600&width=600",
-    category: "accessories",
-  },
-  {
-    id: "belt",
-    name: "Колан",
-    price: "115.00",
-    image: "/placeholder.svg?height=600&width=600",
-    category: "accessories",
-  },
-]
-

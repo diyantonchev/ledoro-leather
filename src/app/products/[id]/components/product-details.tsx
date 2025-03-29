@@ -8,19 +8,18 @@ import { toast } from "sonner"
 
 import { Button } from "~/components/ui/button"
 import { useCart } from "~/components/cart-provider"
+import type { Product } from "../../products-data"
 
 interface ProductDetailProps {
-  productId: string
+  product?: Product
 }
 
-export default function ProductDetails({ productId }: ProductDetailProps) {
+export default function ProductDetails({ product }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1)
   const [currentImage, setCurrentImage] = useState(0)
   const { addToCart } = useCart()
 
-  // Find the product based on the ID from the URL
-  const product = products.find((p) => p.id === productId)
-
+ 
   if (!product) {
     return <div className="container mx-auto px-4 py-12 text-center">Product not found</div>
   }
@@ -113,7 +112,7 @@ export default function ProductDetails({ productId }: ProductDetailProps) {
         {/* Product Info */}
         <div>
           <h1 className="text-2xl md:text-3xl font-light mb-2">{product.name}</h1>
-          <p className="text-xl mb-6">${product.price}</p>
+          <p className="text-xl mb-6">лв.{product.price}</p>
 
           <div className="mb-6">
             <h3 className="text-sm font-medium mb-2">Описание</h3>
@@ -164,166 +163,3 @@ export default function ProductDetails({ productId }: ProductDetailProps) {
     </div>
   )
 }
-
-const products = [
-  {
-    id: "minimal-wallet",
-    name: "Минималистичен портфлейл",
-    price: "125.00",
-    image: "/placeholder.svg?height=600&width=600",
-    gallery: [
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-    ],
-    description:
-      "A sleek, minimalist wallet designed to carry your essentials without the bulk. Features our signature vegetable-tanned leather that ages beautifully with use.",
-    details: [
-      "Vegetable-tanned leather",
-      "4 card slots",
-      "1 bill compartment",
-      "RFID protection",
-      'Dimensions: 4"L x 0.25"W x 3"H',
-    ],
-    category: "wallets",
-  },
-  {
-    id: "card-holder",
-    name: "Card Holder",
-    price: "85.00",
-    image: "/placeholder.svg?height=600&width=600",
-    gallery: [
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-    ],
-    description: "A slim card holder for those who prefer to travel light. Holds up to 6 cards plus folded bills.",
-    details: [
-      "Vegetable-tanned leather",
-      "6 card slots",
-      "Center slot for folded bills",
-      "RFID protection",
-      'Dimensions: 4"L x 0.2"W x 3"H',
-    ],
-    category: "wallets",
-  },
-  {
-    id: "laptop-sleeve",
-    name: "Калъф за лаптоп",
-    price: "175.00",
-    image: "/placeholder.svg?height=600&width=600",
-    gallery: [
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-    ],
-    description:
-      "Protect your laptop in style with our premium leather sleeve. Features a soft microfiber lining and secure magnetic closure.",
-    details: [
-      "Full-grain leather exterior",
-      "Soft microfiber lining",
-      "Magnetic closure",
-      'Fits most 13" laptops',
-      'Dimensions: 13.5"L x 1"W x 9.5"H',
-    ],
-    category: "accessories",
-  },
-  {
-    id: "crossbody-bag",
-    name: "Чанта през рамо",
-    price: "345.00",
-    image: "/placeholder.svg?height=600&width=600",
-    gallery: [
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-    ],
-    description:
-      "A versatile crossbody bag that transitions effortlessly from day to night. Features an adjustable strap and multiple compartments.",
-    details: [
-      "Full-grain Italian leather",
-      "Cotton twill lining",
-      "Adjustable shoulder strap",
-      "Interior zip pocket and card slots",
-      "Magnetic flap closure",
-      'Dimensions: 9"L x 3"W x 6"H',
-    ],
-    category: "bags",
-  },
-  {
-    id: "engraved-wallet",
-    name: "Гравиран портфлейл",
-    price: "165.00",
-    image: "/placeholder.svg?height=600&width=600",
-    gallery: [
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-    ],
-    description:
-      "Keep your travel essentials organized with our travel wallet. Features dedicated slots for your passport, boarding passes, cards, and currency.",
-    details: [
-      "Vegetable-tanned leather",
-      "Passport pocket",
-      "4 card slots",
-      "2 currency compartments",
-      "Pen holder",
-      "RFID protection",
-      'Dimensions: 5.5"L x 0.5"W x 4"H',
-    ],
-    category: "wallets",
-  },
-  {
-    id: "classic-wallet",
-    name: "Класически портфлейл",
-    price: "165.00",
-    image: "/classic-wallet.jpg?height=600&width=600",
-    gallery: [
-      "/classic-wallet.jpg?height=800&width=800",
-      "/classic-wallet-1.jpg?height=800&width=800",
-      "/classic-wallet-2.jpg?height=800&width=800",
-      "/classic-wallet-3.jpg?height=800&width=800",
-    ],
-    description:
-      "A timeless belt crafted from full-grain leather with a solid brass buckle. Designed to age beautifully with wear.",
-    details: ["Full-grain leather", "Solid brass buckle", "Width: 1.5 inches", "Available in sizes 30-42"],
-    category: "accessories",
-  },
-  {
-    id: "keychain",
-    name: "Кожен ключодържател",
-    price: "45.00",
-    image: "/placeholder.svg?height=600&width=600",
-    gallery: [
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-    ],
-    description:
-      "A stylish and durable keychain crafted from the same premium leather as our bags. Features a solid brass key ring.",
-    details: ["Vegetable-tanned leather", "Solid brass hardware", "Hand-stitched detailing", "Length: 4 inches"],
-    category: "accessories",
-  },
-  {
-    id: "belt",
-    name: "Classic Belt",
-    price: "115.00",
-    image: "/placeholder.svg?height=600&width=600",
-    gallery: [
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-      "/placeholder.svg?height=800&width=800",
-    ],
-    description:
-      "A timeless belt crafted from full-grain leather with a solid brass buckle. Designed to age beautifully with wear.",
-    details: ["Full-grain leather", "Solid brass buckle", "Width: 1.5 inches", "Available in sizes 30-42"],
-    category: "accessories",
-  },
-]
