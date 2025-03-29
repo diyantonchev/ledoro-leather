@@ -1,8 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { Suspense } from "react"
 import "~/styles/globals.css"
 import Header from "~/components/header"
+import HeaderSkeleton from "~/components/header-skeleton"
 import Footer from "~/components/footer"
 import { CookieConsentBanner } from "~/components/CookieConsent"
 import { Toaster } from "~/components/ui/sonner"
@@ -24,7 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <Header />
+          <Suspense fallback={<HeaderSkeleton />}>
+            <Header />
+          </Suspense>
           <main>{children}</main>
           <Toaster />
           <CookieConsentBanner />

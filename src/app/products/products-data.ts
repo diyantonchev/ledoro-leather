@@ -20,7 +20,8 @@ type CsvRecord = Omit<Product, 'featured' | 'gallery' | 'details'> & {
 }
 
 export async function getProducts(): Promise<Product[]> {
-  const res = await fetch(env.PRODUCTS_SHEET_URL as string, {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const res = await fetch(env.PRODUCTS_SHEET_URL, {
     cache: 'force-cache',
   });
 

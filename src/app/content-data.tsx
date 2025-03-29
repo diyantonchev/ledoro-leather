@@ -25,7 +25,8 @@ type CsvRecord = {
 }
 
 export const getCommonContent = async (): Promise<CommonContent> => {
-  const res = await fetch(env.COMMON_CONTENT_SHEET_URL as string, {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const res = await fetch(env.COMMON_CONTENT_SHEET_URL, {
     cache: 'force-cache',
   });
   
