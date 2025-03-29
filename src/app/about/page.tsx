@@ -13,7 +13,7 @@ export default function AboutPage() {
         
         <div className="space-y-6 text-muted-foreground">
           <p>
-            Създаденo с любов към традиционните умения и съвременния дизайн, Ledoro Leather представя съвършения баланс между старини и съвременни тенденции.
+            Създаденo с любов към традиционните умения и съвременния дизайн, Ledoro Leather представя съвършения баланс между старинни и съвременни тенденции.
           </p>
 
           <div className="my-12 aspect-video bg-muted/30 flex items-center justify-center">

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
+import { toast } from "sonner"
 
 import { Button } from "~/components/ui/button"
 import { Input } from "~/components/ui/input"
@@ -11,10 +12,12 @@ import { RadioGroup, RadioGroupItem } from "~/components/ui/radio-group"
 import { Separator } from "~/components/ui/separator"
 import { useCart } from "~/components/cart-provider"
 import { useRouter } from "next/navigation"
+import { sendOrderEmail } from "./actions"
 
 export default function CheckoutPage() {
   const { cart, clearCart } = useCart()
   const router = useRouter()
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formState, setFormState] = useState({
     firstName: "",
     lastName: "",
@@ -39,12 +42,32 @@ export default function CheckoutPage() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // TODO: Process the payment here
-    // For this now, we'll just simulate a successful order
-    clearCart()
-    router.push("/checkout/confirmation")
+    setIsSubmitting(true)
+    
+    try {
+      const result = await sendOrderEmail(
+        formState,
+        cart,
+        subtotal,
+        shipping,
+        total
+      )
+      
+      if (result.success) {
+        clearCart()
+        toast.success(`Поръчка #${result.orderNumber} е изпратена успешно!`)
+        router.push(`/checkout/confirmation?orderNumber=${result.orderNumber}`)
+      } else {
+        toast.error(result.error ?? "Неуспешно изпращане на поръчка. Моля, опитайте отново.")
+      }
+    } catch (error) {
+      toast.error("Възникна грешка. Моля, опитайте отново.")
+      console.error("Order submission error:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (cart.length === 0) {
@@ -180,7 +203,7 @@ export default function CheckoutPage() {
                     <Label htmlFor="cash-on-delivery">Наложен платеж</Label>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="credit-card" id="credit-card" />
+                    <RadioGroupItem value="credit-card" id="credit-card" disabled/>
                     <Label htmlFor="credit-card">Карта</Label>
                   </div>
                 </RadioGroup>
@@ -205,8 +228,8 @@ export default function CheckoutPage() {
                 )}
               </div>
 
-              <Button type="submit" className="w-full">
-                Завърши поръчка
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Обработка..." : "Завърши поръчка"}
               </Button>
             </div>
           </form>

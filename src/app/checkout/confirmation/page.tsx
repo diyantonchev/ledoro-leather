@@ -2,11 +2,13 @@
 
 import Link from "next/link"
 import { CheckCircle } from "lucide-react"
+import { useSearchParams } from "next/navigation"
 
 import { Button } from "~/components/ui/button"
 
 export default function ConfirmationPage() {
-  const orderNumber = `LD-${Math.floor(100000 + Math.random() * 900000)}`
+  const searchParams = useSearchParams()
+  const orderNumber = searchParams.get('orderNumber') ?? `ORD-${Math.floor(100000 + Math.random() * 900000)}`
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-2xl text-center">
@@ -34,7 +36,7 @@ export default function ConfirmationPage() {
 
           <div className="flex justify-between">
             <span className="text-muted-foreground">Email:</span>
-            <span>На вашият имейл е изпратено потвърждение</span>
+            <span>На вашия имейл е изпратено потвърждение</span>
           </div>
         </div>
       </div>

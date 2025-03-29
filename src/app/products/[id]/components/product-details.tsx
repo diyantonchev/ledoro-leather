@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight, Minus, Plus, ShoppingBag } from "lucide-react"
 import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 import { Button } from "~/components/ui/button"
 import { useCart } from "~/components/cart-provider"
@@ -18,6 +19,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1)
   const [currentImage, setCurrentImage] = useState(0)
   const { addToCart } = useCart()
+  const router = useRouter()
 
  
   if (!product) {
@@ -33,7 +35,12 @@ export default function ProductDetails({ product }: ProductDetailProps) {
       image: product.image,
     })
 
-    toast.success(`${quantity} ${quantity === 1 ? 'брой' : 'броя'} ${product.name} добавен${quantity === 1 ? '' : 'и'} в кошницата`)
+    toast.success(`${quantity} ${quantity === 1 ? 'брой' : 'броя'} ${product.name} добавен${quantity === 1 ? '' : 'и'} в кошницата`, {
+      action: {
+        label: "Виж кошницата",
+        onClick: () => router.push("/cart")
+      },
+    })
   }
 
   const decreaseQuantity = () => {
