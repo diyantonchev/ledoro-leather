@@ -112,7 +112,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
         {/* Product Info */}
         <div>
           <h1 className="text-2xl md:text-3xl font-light mb-2">{product.name}</h1>
-          <p className="text-xl mb-6">лв.{product.price}</p>
+          <p className="text-xl mb-6">{product.price} лв.</p>
 
           <div className="mb-6">
             <h3 className="text-sm font-medium mb-2">Описание</h3>

@@ -53,7 +53,7 @@ export default async function Home() {
                 />
               </div>
               <h3 className="font-light text-lg">{product.name}</h3>
-              <p className="text-muted-foreground">лв.{product.price}</p>
+              <p className="text-muted-foreground">{product.price} лв.</p>
             </Link>
           ))}
         </div>
