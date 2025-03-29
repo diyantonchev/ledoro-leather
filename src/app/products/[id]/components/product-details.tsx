@@ -60,7 +60,6 @@ export default function ProductDetails({ productId }: ProductDetailProps) {
       <div className="mb-8">
         <Link href="/products" className="text-sm text-muted-foreground hover:text-foreground flex items-center">
           <ChevronLeft className="h-4 w-4 mr-1" />
-          {/* Back to products */}
           Към продуктите
         </Link>
       </div>

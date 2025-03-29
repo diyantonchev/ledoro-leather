@@ -9,7 +9,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <section className="relative w-full h-[70vh]">
         <Image
-          src="/placeholder.svg?height=1080&width=1920"
+          src="/classic-wallet.jpg?height=1080&width=1920"
           alt="Luxury leather goods"
           fill
           className="object-cover"
@@ -21,22 +21,18 @@ export default function Home() {
           <p className="text-lg md:text-xl text-white/90 mb-8 max-w-xl">Timeless craftsmanship. Modern luxury.</p>
           <Button asChild size="lg" className="bg-white text-black hover:bg-white/90">
             <Link href="/products">
-              {/* Shop Collection <ArrowRight className="ml-2 h-4 w-4" /> */}
               Към продуктите <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>
       </section>
 
-      {/* Featured Collection */}
       <section className="py-16 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-light mb-4">
-            {/* FEATURED COLLECTION */}
             Колекция
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            {/* Our signature pieces, crafted with premium Italian leather and meticulous attention to detail. */}
             Нашите продукти, изработени с премиум кожи и изключително внимание към детайла.
           </p>
         </div>
@@ -61,33 +57,26 @@ export default function Home() {
         <div className="text-center mt-12">
           <Button asChild variant="outline">
             <Link href="/products">
-              {/* View All Products */}
               Виж всички продукти <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>
       </section>
 
-      {/* Story Section */}
       <section className="py-16 px-4 md:px-6 lg:px-8 bg-muted/50">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-2xl md:text-3xl font-light mb-4">OUR STORY</h2>
             <p className="text-muted-foreground mb-6">
-              {/* Ledoro Leather was founded on the principles of exceptional craftsmanship and timeless design. Each piece
-              is meticulously handcrafted by skilled artisans using the finest Italian leather. */}
               Ledoro Leather е основана на принципите на ръчна изработка. 
               Всички продукти са изработени с изключително внимание към детайла и устойчиви практики.
             </p>
             <p className="text-muted-foreground mb-6">
-              {/* Our commitment to quality and sustainability ensures that every Ledoro product not only looks beautiful
-              but is built to last for generations. */}
               Нашата цел е да гарантираме високо качество и устойчивост, така че всеки продукт на Ledoro да изглежда красиво, 
               но е изграден да продължи да бъде използван за поколения.
             </p>
             <Button asChild variant="outline">
               <Link href="/about">
-                {/* Learn More */}
                 Научи повече <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>

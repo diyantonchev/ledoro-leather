@@ -1,10 +1,9 @@
-import { Suspense } from "react"
 import Products from "./components/products"
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+
+
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Products />
-    </Suspense>
+    <Products />
   )
 }
