@@ -6,11 +6,16 @@ import { Menu, Search, ShoppingBag, X } from "lucide-react"
 import { Button } from "~/components/ui/button"
 import { useCart } from "~/components/cart-provider"
 import { useCommonContent } from "./common-content-provider"
+import { SearchInput } from "./ui/search-input"
+import { usePathname } from "next/navigation"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
   const { cart } = useCart()
   const commonContent = useCommonContent()
+  const pathname = usePathname()
+  const isProductsPage = pathname === "/products"
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0)
 
@@ -64,10 +69,35 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-4 justify-self-end">
-          <Button variant="ghost" size="icon">
-            <Search className="h-5 w-5" />
-            <span className="sr-only">Search</span>
-          </Button>
+          {isProductsPage && (
+            <>
+              <div className="hidden md:flex items-center">
+                <div className={`transition-all duration-300 ease-in-out overflow-hidden ${isSearchOpen ? 'w-64 opacity-100' : 'w-0 opacity-0'}`}>
+                  <div className="w-64">
+                    <SearchInput />
+                  </div>
+                </div>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => setIsSearchOpen(!isSearchOpen)}
+                  className={`transition-all duration-300 ${isSearchOpen ? 'ml-2' : 'ml-0'}`}
+                >
+                  <Search className="h-5 w-5" />
+                  <span className="sr-only">Search</span>
+                </Button>
+              </div>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="md:hidden" 
+                onClick={() => setIsSearchOpen(!isSearchOpen)}
+              >
+                <Search className="h-5 w-5" />
+                <span className="sr-only">Search</span>
+              </Button>
+            </>
+          )}
           <Button variant="ghost" size="icon" asChild>
             <Link href="/cart" className="relative">
               <ShoppingBag className="h-5 w-5" />
@@ -133,6 +163,13 @@ export default function Header() {
               </li>
             </ul>
           </nav>
+        </div>
+      )}
+
+      {/* Mobile search */}
+      {isSearchOpen && isProductsPage && (
+        <div className="md:hidden border-b p-4">
+          <SearchInput />
         </div>
       )}
     </header>
