@@ -43,7 +43,7 @@ export default function PrivacyPage() {
           <li>Жалба до КЗЛД</li>
         </ul>
 
-        <h2 className="text-2xl font-semibold mt-8 mb-4">8. Контакти</h2>
+        <h2 className="text-2xl font-semibold mt-8 mb-4">8. Контакт</h2>
         <p className="mb-6">sistems1001@gmail.com</p>
       </div>
     </div>
