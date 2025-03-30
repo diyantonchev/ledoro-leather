@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ChevronLeft, ChevronRight, Minus, Plus, ShoppingBag } from "lucide-react"
+import { ChevronLeft, ChevronRight, Minus, Plus, ShoppingBag, X } from "lucide-react"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 
@@ -18,9 +18,37 @@ interface ProductDetailProps {
 export default function ProductDetails({ product }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1)
   const [currentImage, setCurrentImage] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const { addToCart } = useCart()
   const router = useRouter()
 
+  const openModal = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      closeModal()
+    }
+  }
+
+  // Handle Escape key to close modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isModalOpen) {
+        closeModal()
+      }
+    }
+    
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isModalOpen])
  
   if (!product) {
     return <div className="container mx-auto px-4 py-12 text-center">Product not found</div>
@@ -73,7 +101,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
       <div className="grid md:grid-cols-2 gap-12">
         {/* Product Gallery */}
         <div className="relative">
-          <div className="relative aspect-square bg-gray-100 mb-4">
+          <div className="relative aspect-square bg-gray-100 mb-4 cursor-pointer" onClick={openModal}>
             <Image
               src={product.gallery[currentImage] ?? "/placeholder.svg"}
               alt={product.name}
@@ -82,7 +110,10 @@ export default function ProductDetails({ product }: ProductDetailProps) {
             />
 
             <button
-              onClick={prevImage}
+              onClick={(e) => {
+                e.stopPropagation();
+                prevImage();
+              }}
               className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2"
               aria-label="Previous image"
             >
@@ -90,12 +121,24 @@ export default function ProductDetails({ product }: ProductDetailProps) {
             </button>
 
             <button
-              onClick={nextImage}
+              onClick={(e) => {
+                e.stopPropagation();
+                nextImage();
+              }}
               className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2"
               aria-label="Next image"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
+            
+            <div className="absolute bottom-4 right-4 bg-white/80 rounded-full p-2">
+              <span className="sr-only">View full size</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 3h6v6"></path>
+                <path d="M10 14 21 3"></path>
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              </svg>
+            </div>
           </div>
 
           <div className="grid grid-cols-4 gap-4">
@@ -167,6 +210,49 @@ export default function ProductDetails({ product }: ProductDetailProps) {
           </div>
         </div>
       </div>
+
+      {/* Image Modal */}
+      {isModalOpen && (
+        <div 
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center" 
+        >
+          <div className="relative w-full h-full flex items-center justify-center" onClick={handleOverlayClick}>
+            <button 
+              onClick={closeModal}
+              className="absolute top-4 right-4 bg-white/20 hover:bg-white/40 rounded-full p-2 transition-colors z-10"
+              aria-label="Close modal"
+            >
+              <X className="h-6 w-6 text-white" />
+            </button>
+            
+            <div className="max-w-5xl max-h-[80vh] relative" onClick={(e) => e.stopPropagation()}>
+              <Image
+                src={product.gallery[currentImage] ?? "/placeholder.svg"}
+                alt={product.name}
+                width={1200}
+                height={1200}
+                className="object-contain"
+              />
+            </div>
+            
+            <button
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 rounded-full p-3 transition-colors z-10"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-6 w-6 text-white" />
+            </button>
+
+            <button
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 rounded-full p-3 transition-colors z-10"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-6 w-6 text-white" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
