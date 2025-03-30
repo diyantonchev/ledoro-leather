@@ -13,6 +13,7 @@ import { Separator } from "~/components/ui/separator"
 import { useCart } from "~/components/cart-provider"
 import { useRouter } from "next/navigation"
 import { sendOrderEmail } from "./actions"
+import { Checkbox } from "~/components/ui/checkbox"
 
 export default function CheckoutPage() {
   const { cart, clearCart } = useCart()
@@ -29,6 +30,8 @@ export default function CheckoutPage() {
     zipCode: "",
     paymentMethod: "cash-on-delivery",
   })
+  const [termsAccepted, setTermsAccepted] = useState(false)
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
 
   const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0)
   const shipping = subtotal > 100 ? 0 : 7
@@ -228,7 +231,49 @@ export default function CheckoutPage() {
                 )}
               </div>
 
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
+              <Separator />
+
+              <div className="space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="terms"
+                    checked={termsAccepted}
+                    onCheckedChange={(checked) => 
+                      setTermsAccepted(checked === true)
+                    }
+                    required
+                  />
+                  <Label htmlFor="terms" className="text-sm">
+                    Приемам{" "}
+                    <Link href="/terms" className="text-gray-500 hover:text-gray-700 hover:underline font-medium">
+                      ОБЩИ УСЛОВИЯ
+                    </Link>
+                  </Label>
+                </div>
+                
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="privacy"
+                    checked={privacyAccepted}
+                    onCheckedChange={(checked) => 
+                      setPrivacyAccepted(checked === true)
+                    }
+                    required
+                  />
+                  <Label htmlFor="privacy" className="text-sm">
+                    Прочетох и съм съгласен с
+                    <Link href="/privacy" className="text-gray-500 hover:text-gray-700 hover:underline font-medium">
+                      Декларация за даване на съгласие за обработка на лични данни
+                    </Link>
+                  </Label>
+                </div>
+              </div>
+
+              <Button 
+                type="submit" 
+                className="w-full" 
+                disabled={isSubmitting || !termsAccepted || !privacyAccepted}
+              >
                 {isSubmitting ? "Обработка..." : "Завърши поръчка"}
               </Button>
             </div>
