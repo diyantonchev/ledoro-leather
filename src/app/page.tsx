@@ -70,7 +70,7 @@ export default async function Home() {
       <section className="py-16 px-4 md:px-6 lg:px-8 bg-muted/50">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-2xl md:text-3xl font-light mb-4">OUR STORY</h2>
+            <h2 className="text-2xl md:text-3xl font-light mb-4">Нашата история</h2>
             <p className="text-muted-foreground mb-6">
               Ledoro Leather е основана на принципите на ръчна изработка. 
               Всички продукти са изработени с изключително внимание към детайла и устойчиви практики.
@@ -97,7 +97,7 @@ export default async function Home() {
       </section>
 
       {/* Newsletter */}
-      <section className="py-16 px-4 md:px-6 lg:px-8 bg-black text-white">
+      {/* <section className="py-16 px-4 md:px-6 lg:px-8 bg-black text-white">
         <div className="max-w-xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-light mb-4">JOIN OUR COMMUNITY</h2>
           <p className="text-white/80 mb-8">
@@ -113,7 +113,7 @@ export default async function Home() {
             <Button className="bg-white text-black hover:bg-white/90">Subscribe</Button>
           </form>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }

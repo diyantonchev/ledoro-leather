@@ -8,7 +8,7 @@ export default function TermsPage() {
       <div className="prose prose-lg max-w-none">
         <h2 className="text-2xl font-semibold mt-8 mb-4">1. Данни за търговеца</h2>
         <p className="mb-6">
-          [Име на фирма], ЕИК: [xxxxx], Адрес: [адрес], Email: [email]
+          [Име на фирма], ЕИК: [xxxxx], Адрес: [адрес], Email: sistems1001@gmail.com
         </p>
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">2. Описание на услугите</h2>

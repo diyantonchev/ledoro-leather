@@ -31,7 +31,7 @@ export default function CheckoutPage() {
   })
 
   const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0)
-  const shipping = subtotal > 200 ? 0 : 15
+  const shipping = subtotal > 100 ? 0 : 7
   const total = subtotal + shipping
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
