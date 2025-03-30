@@ -1,5 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter } from "next/font/google"
 import { Suspense } from "react"
 import "~/styles/globals.css"
@@ -30,6 +32,8 @@ export default function RootLayout({
             <Header />
           </Suspense>
           <main>{children}</main>
+          <Analytics />
+          <SpeedInsights />
           <Toaster />
           <CookieConsentBanner />
         </Providers>
