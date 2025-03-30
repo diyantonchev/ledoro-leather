@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Menu, Search, ShoppingBag, X } from "lucide-react"
 import { Button } from "~/components/ui/button"
 import { useCart } from "~/components/cart-provider"
@@ -16,8 +16,14 @@ export default function Header() {
   const commonContent = useCommonContent()
   const pathname = usePathname()
   const isProductsPage = pathname === "/products"
+  const [mounted, setMounted] = useState(false)
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0)
+
+  // Ensure hydration completes before showing cart count
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <header className="border-b">
@@ -101,7 +107,7 @@ export default function Header() {
           <Button variant="ghost" size="icon" asChild>
             <Link href="/cart" className="relative">
               <ShoppingBag className="h-5 w-5" />
-              {totalItems > 0 && (
+              {mounted && totalItems > 0 && (
                 <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-black text-[10px] text-white">
                   {totalItems}
                 </span>

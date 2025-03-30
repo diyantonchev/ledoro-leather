@@ -1,15 +1,59 @@
-import type { Metadata } from "next"
+"use client"
+
+import { useState } from "react"
 import { Button } from "~/components/ui/button"
 import { Input } from "~/components/ui/input"
 import { Textarea } from "~/components/ui/textarea"
+import { Label } from "~/components/ui/label"
 import { Mail, MapPin, Phone } from "lucide-react"
-
-export const metadata: Metadata = {
-  title: "Contact | Ledoro Leather",
-  description: "Get in touch with our team for any questions, custom orders, or support",
-}
+import { toast } from "sonner"
+import { sendContactEmail } from "./actions"
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  })
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target
+    setFormState({
+      ...formState,
+      [name]: value,
+    })
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    
+    try {
+      const result = await sendContactEmail(formState)
+      
+      if (result.success) {
+        toast.success("Съобщението е изпратено успешно!")
+        setFormState({
+          name: "",
+          email: "",
+          subject: "",
+          message: ""
+        })
+      } else {
+        toast.error(result.error ?? "Неуспешно изпращане на съобщение. Моля, опитайте отново.")
+      }
+    } catch (error) {
+      toast.error("Възникна грешка. Моля, опитайте отново.")
+      console.error("Contact form submission error:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
       <div className="max-w-3xl mx-auto">
@@ -62,37 +106,59 @@ export default function ContactPage() {
           </div>
           
           <div className="space-y-6">
-            <form className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm mb-2">
-                  Име
-                </label>
-                <Input id="name" placeholder="Вашето име" />
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              <div className="space-y-2">
+                <Label htmlFor="name">Име</Label>
+                <Input 
+                  id="name"
+                  name="name"
+                  placeholder="Вашето име"
+                  value={formState.name} 
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               
-              <div>
-                <label htmlFor="email" className="block text-sm mb-2">
-                  Имейл
-                </label>
-                <Input id="email" type="email" placeholder="your.email@example.com" />
+              <div className="space-y-2">
+                <Label htmlFor="email">Имейл</Label>
+                <Input 
+                  id="email"
+                  name="email" 
+                  type="email" 
+                  placeholder="your.email@example.com"
+                  value={formState.email}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               
-              <div>
-                <label htmlFor="subject" className="block text-sm mb-2">
-                  Относно
-                </label>
-                <Input id="subject" placeholder="Как можем да ви помогнем?" />
+              <div className="space-y-2">
+                <Label htmlFor="subject">Относно</Label>
+                <Input 
+                  id="subject"
+                  name="subject"
+                  placeholder="Как можем да ви помогнем?"
+                  value={formState.subject}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               
-              <div>
-                <label htmlFor="message" className="block text-sm mb-2">
-                  Съобщение
-                </label>
-                <Textarea id="message" placeholder="Вашето съобщение..." rows={5} />
+              <div className="space-y-2">
+                <Label htmlFor="message">Съобщение</Label>
+                <Textarea 
+                  id="message"
+                  name="message"
+                  placeholder="Вашето съобщение..." 
+                  rows={5}
+                  value={formState.message}
+                  onChange={handleInputChange}
+                  required
+                />
               </div>
               
-              <Button type="submit" className="w-full">
-                Изпратете
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Изпращане..." : "Изпрати"}
               </Button>
             </form>
             
