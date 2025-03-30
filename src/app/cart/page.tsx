@@ -12,7 +12,7 @@ export default function CartPage() {
   const { cart, updateQuantity, removeFromCart } = useCart()
 
   const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0)
-  const shipping = subtotal > 200 ? 0 : 15
+  const shipping = subtotal > 100 ? 0 : 7
   const total = subtotal + shipping
 
   if (cart.length === 0) {
@@ -108,9 +108,9 @@ export default function CartPage() {
                 <span>{total.toFixed(2)} лв.</span>
               </div>
 
-              {subtotal < 200 && (
+              {subtotal < 100 && (
                 <p className="text-sm text-muted-foreground">
-                  Имате нужда от още {((200 - subtotal) / 100).toFixed(2)} лв. за безплатна доставка
+                  Имате нужда от още {((100 - subtotal)).toFixed(2)} лв. за безплатна доставка
                 </p>
               )}
             </div>
