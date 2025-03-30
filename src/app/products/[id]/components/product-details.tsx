@@ -51,7 +51,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
   }, [isModalOpen])
  
   if (!product) {
-    return <div className="container mx-auto px-4 py-12 text-center">Product not found</div>
+    return <div className="container mx-auto px-4 py-12 text-center">Продуктът не е намерен</div>
   }
 
   const handleAddToCart = () => {

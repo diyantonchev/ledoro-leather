@@ -56,9 +56,9 @@ export default function CheckoutPage() {
       )
       
       if (result.success) {
-        clearCart()
-        toast.success(`Поръчка #${result.orderNumber} е изпратена успешно!`)
         router.push(`/checkout/confirmation?orderNumber=${result.orderNumber}`)
+        toast.success(`Поръчка #${result.orderNumber} е изпратена успешно!`)
+        setTimeout(() => clearCart(), 100)
       } else {
         toast.error(result.error ?? "Неуспешно изпращане на поръчка. Моля, опитайте отново.")
       }
@@ -70,7 +70,7 @@ export default function CheckoutPage() {
     }
   }
 
-  if (cart.length === 0) {
+  if (cart.length === 0 && !isSubmitting) {
     return (
       <div className="container mx-auto px-4 py-12 text-center">
         <h1 className="text-2xl font-light mb-4">
