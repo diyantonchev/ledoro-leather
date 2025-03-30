@@ -5,9 +5,10 @@ import { Button } from "~/components/ui/button"
 import { Input } from "~/components/ui/input"
 import { Textarea } from "~/components/ui/textarea"
 import { Label } from "~/components/ui/label"
-import { Mail, MapPin, Phone } from "lucide-react"
+import { Mail, MapPin, Phone, Instagram, Facebook, Youtube } from "lucide-react"
 import { toast } from "sonner"
 import { sendContactEmail } from "./actions"
+import Link from "next/link"
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -90,7 +91,40 @@ export default function ContactPage() {
                 <Mail className="h-5 w-5 text-muted-foreground mt-0.5" />
                 <div>
                   <h3 className="font-medium">Email</h3>
-                  <p className="text-sm text-muted-foreground">info@ledoroleather.com</p>
+                  <p className="text-sm text-muted-foreground">sistems1001@gmail.com</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-4 mt-5">
+                <div className="h-5 w-5 text-muted-foreground mt-0.5" />
+                <div className="flex items-center space-x-4">
+                  <Link 
+                    href="https://www.instagram.com/ledoroleather" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-[#E1306C] transition-colors"
+                  >
+                    <Instagram className="h-5 w-5" />
+                    <span className="sr-only">Instagram</span>
+                  </Link>
+                  <Link 
+                    href="https://www.facebook.com/profile.php?id=100091527393698" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-[#1877F2] transition-colors"
+                  >
+                    <Facebook className="h-5 w-5" />
+                    <span className="sr-only">Facebook</span>
+                  </Link>
+                  <Link 
+                    href="https://youtube.com/@ledoroleather" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-[#FF0000] transition-colors"
+                  >
+                    <Youtube className="h-5 w-5" />
+                    <span className="sr-only">YouTube</span>
+                  </Link>
                 </div>
               </div>
             </div>
