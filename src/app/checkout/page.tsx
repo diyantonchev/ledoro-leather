@@ -237,13 +237,14 @@ export default function CheckoutPage() {
                 <div className="flex items-center space-x-2">
                   <Checkbox
                     id="terms"
+                    className="cursor-pointer"
                     checked={termsAccepted}
                     onCheckedChange={(checked) => 
                       setTermsAccepted(checked === true)
                     }
                     required
                   />
-                  <Label htmlFor="terms" className="text-sm">
+                  <Label htmlFor="terms" className="text-sm cursor-pointer">
                     Приемам{" "}
                     <Link href="/terms" className="text-gray-500 hover:text-gray-700 hover:underline font-medium">
                       ОБЩИ УСЛОВИЯ
@@ -254,13 +255,14 @@ export default function CheckoutPage() {
                 <div className="flex items-center space-x-2">
                   <Checkbox
                     id="privacy"
+                    className="cursor-pointer"
                     checked={privacyAccepted}
                     onCheckedChange={(checked) => 
                       setPrivacyAccepted(checked === true)
                     }
                     required
                   />
-                  <Label htmlFor="privacy" className="text-sm">
+                  <Label htmlFor="privacy" className="text-sm cursor-pointer">
                     Прочетох и съм съгласен с
                     <Link href="/privacy" className="text-gray-500 hover:text-gray-700 hover:underline font-medium">
                       Декларация за даване на съгласие за обработка на лични данни
@@ -271,7 +273,7 @@ export default function CheckoutPage() {
 
               <Button 
                 type="submit" 
-                className="w-full" 
+                className="w-full hover:bg-gray-800 transition-colors cursor-pointer" 
                 disabled={isSubmitting || !termsAccepted || !privacyAccepted}
               >
                 {isSubmitting ? "Обработка..." : "Завърши поръчка"}

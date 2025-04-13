@@ -52,10 +52,10 @@ export default function CartPage() {
                   <p className="text-sm text-muted-foreground mb-4">{item.price.toFixed(2)} лв.</p>
 
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center border rounded-md w-24">
+                    <div className="flex items-center border rounded-md w-24 cursor-pointer">
                       <button
                         onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
-                        className="flex-1 h-8 flex items-center justify-center"
+                        className="flex-1 h-8 flex items-center justify-center cursor-pointer"
                         aria-label="Decrease quantity"
                       >
                         <Minus className="h-3 w-3" />
@@ -65,7 +65,7 @@ export default function CartPage() {
                       </span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="flex-1 h-8 flex items-center justify-center"
+                        className="flex-1 h-8 flex items-center justify-center cursor-pointer"
                         aria-label="Increase quantity"
                       >
                         <Plus className="h-3 w-3" />
@@ -74,7 +74,7 @@ export default function CartPage() {
 
                     <button
                       onClick={() => removeFromCart(item.id)}
-                      className="text-muted-foreground hover:text-foreground"
+                      className="text-muted-foreground hover:text-foreground cursor-pointer"
                       aria-label="Remove item"
                     >
                       <Trash2 className="h-4 w-4" />
