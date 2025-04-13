@@ -183,7 +183,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
             <div className="flex items-center border rounded-md w-32">
               <button
                 onClick={decreaseQuantity}
-                className="flex-1 h-10 flex items-center justify-center"
+                className="flex-1 h-10 flex items-center justify-center cursor-pointer"
                 aria-label="Decrease quantity"
               >
                 <Minus className="h-4 w-4" />
@@ -191,15 +191,15 @@ export default function ProductDetails({ product }: ProductDetailProps) {
               <span className="flex-1 h-10 flex items-center justify-center border-x">{quantity}</span>
               <button
                 onClick={increaseQuantity}
-                className="flex-1 h-10 flex items-center justify-center"
+                className="flex-1 h-10 flex items-center justify-center cursor-pointer"
                 aria-label="Increase quantity"
               >
-                <Plus className="h-4 w-4" />
+                <Plus className="h-4 w-4 hover:bg-amber-50 transition-colors cursor-pointer" />
               </button>
             </div>
           </div>
 
-          <Button onClick={handleAddToCart} size="lg" className="w-full mb-4">
+          <Button onClick={handleAddToCart} size="lg" className="w-full mb-4 hover:bg-gray-800 transition-colors cursor-pointer">
             <ShoppingBag className="mr-2 h-5 w-5" />
             Добави в кошницата
           </Button>
