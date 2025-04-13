@@ -1,6 +1,8 @@
 import ProductDetails from "./components/product-details"
 import { getProducts } from "../products-data"
 
+export const dynamic = 'force-static';
+
 type ProductPageProps = {
   params: Promise<{ id: string }> 
 }
