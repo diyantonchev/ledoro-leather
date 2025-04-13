@@ -114,7 +114,7 @@ export default function ProductDetails({ product }: ProductDetailProps) {
                 e.stopPropagation();
                 prevImage();
               }}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/95 rounded-full p-2 transition-colors cursor-pointer"
               aria-label="Previous image"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -125,13 +125,13 @@ export default function ProductDetails({ product }: ProductDetailProps) {
                 e.stopPropagation();
                 nextImage();
               }}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/95 rounded-full p-2 transition-colors cursor-pointer"
               aria-label="Next image"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
             
-            <div className="absolute bottom-4 right-4 bg-white/80 rounded-full p-2">
+            <div className="absolute bottom-4 right-4 bg-white/80 hover:bg-white/95 rounded-full p-2 transition-colors cursor-pointer">
               <span className="sr-only">View full size</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M15 3h6v6"></path>
