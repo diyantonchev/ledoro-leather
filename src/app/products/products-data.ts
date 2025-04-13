@@ -22,7 +22,7 @@ type CsvRecord = Omit<Product, 'featured' | 'gallery' | 'details'> & {
 export async function getProducts(): Promise<Product[]> {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   const res = await fetch(env.PRODUCTS_SHEET_URL, {
-    cache: 'force-cache',
+    next: { revalidate: 3600 },
   });
 
   if (!res.ok) {
