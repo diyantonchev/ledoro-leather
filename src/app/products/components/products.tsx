@@ -27,7 +27,7 @@ export default function Products({ products }: ProductsProps) {
       <h1 className="text-2xl md:text-3xl font-light mb-8 text-center">
         {category 
           ? categoryTitles[category] ?? `Category: ${category}`
-          : "Всички продукти"}
+          : "Продуктов каталог"}
       </h1>
 
       {filteredProducts.length === 0 ? (
@@ -59,5 +59,5 @@ export default function Products({ products }: ProductsProps) {
 const categoryTitles: Record<string, string> = {
   wallets: "Портфейли",
   accessories: "Аксесоари",
-  bags: "Чанти"
+  belts: "Колани"
 }

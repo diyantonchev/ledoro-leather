@@ -35,10 +35,10 @@ export default async function Footer() {
               </li>
               <li>
                 <Link
-                  href="/products?category=bags"
+                  href="/products?category=belts"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {commonContent.link_bags}
+                  {commonContent.link_belts}
                 </Link>
               </li>
               <li>

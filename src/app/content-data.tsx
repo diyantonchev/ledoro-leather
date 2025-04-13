@@ -8,10 +8,10 @@ export type CommonContent = {
   link_all_products: string;
   link_wallets: string;
   link_accessories: string;
-  link_bags: string;
   link_delivery: string;
   link_terms: string;
   link_privacy: string;
+  link_belts: string;
   footer_tagline: string;
   footer_copy_text: string;
   footer_shop: string;
@@ -57,7 +57,7 @@ export const getCommonContent = async (): Promise<CommonContent> => {
       link_all_products: '',
       link_wallets: '',
       link_accessories: '',
-      link_bags: '',
+      link_belts: '',
       link_delivery: '',
       link_terms: '',
       link_privacy: '',

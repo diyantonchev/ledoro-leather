@@ -49,8 +49,8 @@ export default function Header() {
                     <Link href="/products?category=wallets" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
                       {commonContent.link_wallets}
                     </Link>
-                    <Link href="/products?category=bags" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
-                      {commonContent.link_bags}
+                    <Link href="/products?category=belts" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
+                      {commonContent.link_belts}
                     </Link>
                     <Link href="/products?category=accessories" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
                       {commonContent.link_accessories}
@@ -148,8 +148,8 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/products?category=bags" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
-                  {commonContent.link_bags}
+                <Link href="/products?category=belts" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
+                  {commonContent.link_belts}
                 </Link>
               </li>
               <li>

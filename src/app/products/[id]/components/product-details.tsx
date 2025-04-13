@@ -231,7 +231,8 @@ export default function ProductDetails({ product }: ProductDetailProps) {
                 alt={product.name}
                 width={1200}
                 height={1200}
-                className="object-contain"
+                className="object-contain max-h-[80vh] w-auto"
+                style={{ width: 'auto', height: 'auto' }}
               />
             </div>
             

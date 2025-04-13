@@ -61,7 +61,7 @@ export default async function Home() {
         <div className="text-center mt-12">
           <Button asChild variant="outline">
             <Link href="/products">
-              Виж всички продукти <ArrowRight className="ml-2 h-4 w-4" />
+              Виж цялата колекция <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>
