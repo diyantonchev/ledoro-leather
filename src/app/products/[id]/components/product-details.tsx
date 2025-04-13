@@ -183,18 +183,18 @@ export default function ProductDetails({ product }: ProductDetailProps) {
             <div className="flex items-center border rounded-md w-32">
               <button
                 onClick={decreaseQuantity}
-                className="flex-1 h-10 flex items-center justify-center cursor-pointer"
+                className="flex-1 h-10 flex items-center justify-center cursor-pointer group"
                 aria-label="Decrease quantity"
               >
-                <Minus className="h-4 w-4" />
+                <Minus className="h-4 w-4 group-hover:text-gray-600 group-hover:scale-110 transition-transform" />
               </button>
               <span className="flex-1 h-10 flex items-center justify-center border-x">{quantity}</span>
               <button
                 onClick={increaseQuantity}
-                className="flex-1 h-10 flex items-center justify-center cursor-pointer"
+                className="flex-1 h-10 flex items-center justify-center cursor-pointer group"
                 aria-label="Increase quantity"
               >
-                <Plus className="h-4 w-4 hover:bg-amber-50 transition-colors cursor-pointer" />
+                <Plus className="h-4 w-4 group-hover:text-gray-600 group-hover:scale-110 transition-transform" />
               </button>
             </div>
           </div>
