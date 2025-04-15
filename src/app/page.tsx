@@ -89,7 +89,7 @@ export default async function Home() {
           </div>
           <div className="relative aspect-square">
             <Image
-              src="/placeholder.svg?height=800&width=800"
+              src="/ledoro-craft.jpg?height=800&width=800"
               alt="Craftsman working on leather"
               fill
               className="object-cover rounded-md"

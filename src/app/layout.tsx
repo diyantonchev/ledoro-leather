@@ -31,7 +31,7 @@ export default function RootLayout({
           <Suspense fallback={<HeaderSkeleton />}>
             <Header />
           </Suspense>
-          <main>{children}</main>
+          <main className="pt-16">{children}</main>
           <Analytics />
           <SpeedInsights />
           <Toaster />
