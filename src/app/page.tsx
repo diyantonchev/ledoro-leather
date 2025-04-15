@@ -5,6 +5,8 @@ import { ArrowRight } from "lucide-react"
 import { Button } from "~/components/ui/button"
 import { getProducts } from "./products/products-data"
 
+export const dynamic = 'force-static';
+
 export default async function Home() {
   const products = await getProducts()
   const featuredProducts = products.filter((product) => product.featured)

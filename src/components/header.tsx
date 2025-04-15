@@ -12,11 +12,13 @@ import { usePathname } from "next/navigation"
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
   const { cart } = useCart()
   const commonContent = useCommonContent()
   const pathname = usePathname()
   const isProductsPage = pathname === "/products"
   const [mounted, setMounted] = useState(false)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0)
 
@@ -25,8 +27,28 @@ export default function Header() {
     setMounted(true)
   }, [])
 
+  // Handle scroll behavior
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      
+      // Show header when scrolling up or at the top of the page
+      if (currentScrollY < lastScrollY || currentScrollY < 100) {
+        setIsHeaderVisible(true)
+      } else {
+        // Hide header when scrolling down
+        setIsHeaderVisible(false)
+      }
+      
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [lastScrollY])
+
   return (
-    <header className="border-b">
+    <header className={`border-b fixed w-full top-0 z-50 bg-background transition-transform duration-300 ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className="container mx-auto px-4 grid grid-cols-3 h-16 items-center">
         <div className="flex items-center">
           <div className="md:hidden">
