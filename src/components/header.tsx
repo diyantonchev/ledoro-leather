@@ -48,7 +48,13 @@ export default function Header() {
   }, [lastScrollY])
 
   return (
-    <header className={`border-b fixed w-full top-0 z-50 bg-background transition-transform duration-300 ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+    <header
+      className={
+        isMenuOpen
+          ? 'w-full bg-background' // static header when menu is open
+          : `border-b fixed w-full top-0 z-50 bg-background transition-transform duration-300 ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`
+      }
+    >
       <div className="container mx-auto px-4 grid grid-cols-3 h-16 items-center">
         <div className="flex items-center">
           <div className="md:hidden">
@@ -62,7 +68,7 @@ export default function Header() {
               <Link href="/products" className="text-sm font-light hover:text-muted-foreground transition-colors">
                 {commonContent.header_shop}
               </Link>
-              <div className="absolute left-0 top-full invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 pt-2 z-50">
+              <div className="absolute left-0 top-full invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 pt-2 z-10">
                 <div className="bg-popover rounded-[6px] border p-2 shadow-md w-[200px]">
                   <div className="space-y-1">
                     <Link href="/products" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground">
@@ -142,7 +148,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-white">
+        <div className="fixed inset-0 z-[100] bg-white">
           <div className="grid grid-cols-3 h-16 items-center px-4 border-b">
             <div></div>
             <div className="justify-self-center">

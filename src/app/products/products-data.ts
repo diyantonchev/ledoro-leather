@@ -41,18 +41,14 @@ export async function getProducts(): Promise<Product[]> {
     }) as CsvRecord[];
 
     return records.map((record) => {
-      // Validate required fields
-      if (!record.id || !record.name || !record.price || !record.description || !record.image || !record.category) {
-        throw new Error(`Missing required fields in row: ${JSON.stringify(record)}`);
-      }
-
+      // Provide default values for missing fields instead of throwing error
       return {
-        id: record.id,
-        name: record.name,
-        price: record.price,
-        description: record.description,
-        image: transformGoogleDriveUrl(record.image),
-        category: record.category,
+        id: record.id || `product-${Math.random().toString(36).substring(7)}`,
+        name: record.name || 'Без име',
+        price: record.price || '0',
+        description: record.description || 'Няма описание',
+        image: transformGoogleDriveUrl(record.image || ''),
+        category: record.category || '',
         gallery: record.gallery?.split(';').map((s) => transformGoogleDriveUrl(s.trim())).filter(Boolean) ?? [],
         details: record.details?.split(';').map((s) => s.trim()).filter(Boolean) ?? [],
         featured: record.featured?.toUpperCase() === 'TRUE'
