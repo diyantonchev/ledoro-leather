@@ -80,7 +80,7 @@ export default function Header() {
                     <Link href="/products?category=belts" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
                       {commonContent.link_belts}
                     </Link>
-                    <Link href="/products?category=accessories" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
+                    <Link href="/products?category=keychains" className="block px-2 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground rounded-[4px]">
                       {commonContent.link_accessories}
                     </Link>
                   </div>
