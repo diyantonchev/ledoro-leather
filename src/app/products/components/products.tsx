@@ -58,6 +58,6 @@ export default function Products({ products }: ProductsProps) {
 
 const categoryTitles: Record<string, string> = {
   wallets: "Портфейли",
-  accessories: "Аксесоари",
+  accessories: "Ключодържатели",
   belts: "Колани"
 }
