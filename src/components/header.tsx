@@ -181,7 +181,7 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/products?category=accessories" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
+                <Link href="/products?category=keychains" className="text-lg font-light" onClick={() => setIsMenuOpen(false)}>
                   {commonContent.link_accessories}
                 </Link>
               </li>
