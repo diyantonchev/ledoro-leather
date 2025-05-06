@@ -5,7 +5,8 @@ import { Button } from "~/components/ui/button"
 import { Input } from "~/components/ui/input"
 import { Textarea } from "~/components/ui/textarea"
 import { Label } from "~/components/ui/label"
-import { Mail, MapPin, Phone, Instagram, Facebook, Youtube } from "lucide-react"
+import { Mail, MapPin, Phone } from "lucide-react"
+import { InstagramIcon, FacebookIcon, YoutubeIcon } from "~/components/social-icons/SocialIcons"
 import { toast } from "sonner"
 import { sendContactEmail } from "./actions"
 import Link from "next/link"
@@ -56,9 +57,9 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-12 md:py-16">
+    <div className="container mx-auto px-4 py-12 md:py-12">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-light mb-8 text-center">Свържи се с нас</h1>
+        <h1 className="text-3xl font-light mb-12 text-center">Свържи се с нас</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-8">
@@ -83,7 +84,7 @@ export default function ContactPage() {
                 <Phone className="h-5 w-5 text-muted-foreground mt-0.5" />
                 <div>
                   <h3 className="font-medium">Телефон</h3>
-                  <p className="text-sm text-muted-foreground">+359 88 888 8888</p>
+                  <p className="text-sm text-muted-foreground"> <a href="tel:+359898988875" className="hover:text-blue-800 hover:underline transition-colors duration-200">+359 89 8988875</a></p>
                 </div>
               </div>
               
@@ -91,7 +92,7 @@ export default function ContactPage() {
                 <Mail className="h-5 w-5 text-muted-foreground mt-0.5" />
                 <div>
                   <h3 className="font-medium">Email</h3>
-                  <p className="text-sm text-muted-foreground">sistems1001@gmail.com</p>
+                  <p className="text-sm text-muted-foreground"><a href="mailto:sistems1001@gmail.com" className="hover:text-blue-800 hover:underline transition-colors duration-200">sistems1001@gmail.com</a></p>
                 </div>
               </div>
               
@@ -104,7 +105,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-[#E1306C] transition-colors"
                   >
-                    <Instagram className="h-5 w-5" />
+                    <InstagramIcon className="h-5 w-5" />
                     <span className="sr-only">Instagram</span>
                   </Link>
                   <Link 
@@ -113,7 +114,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-[#1877F2] transition-colors"
                   >
-                    <Facebook className="h-5 w-5" />
+                    <FacebookIcon className="h-5 w-5" />
                     <span className="sr-only">Facebook</span>
                   </Link>
                   <Link 
@@ -122,7 +123,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="text-muted-foreground hover:text-[#FF0000] transition-colors"
                   >
-                    <Youtube className="h-5 w-5" />
+                    <YoutubeIcon className="h-5 w-5" />
                     <span className="sr-only">YouTube</span>
                   </Link>
                 </div>
@@ -196,7 +197,7 @@ export default function ContactPage() {
               </Button>
             </form>
             
-            <p className="text-xs text-muted-foreground text-center pt-4">
+            <p className="text-xs text-muted-foreground text-center">
               Ще ви отговорим в рамките на 24-48 часа.
             </p>
           </div>

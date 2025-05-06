@@ -205,8 +205,8 @@ export default function ProductDetails({ product }: ProductDetailProps) {
           </Button>
 
           <div className="text-sm text-muted-foreground">
-            <p>Безплатна доставка за поръчки над 100 лв.</p>
-            <p>30-дневен право на връщане</p>
+            <p>Безплатна доставка за поръчки над 80 лв.</p>
+            <p>14-дневен право на връщане</p>
           </div>
         </div>
       </div>
