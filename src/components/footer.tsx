@@ -43,7 +43,7 @@ export default async function Footer() {
               </li>
               <li>
                 <Link
-                  href="/products?category=accessories"
+                  href="/products?category=keychains"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {commonContent.link_accessories}
